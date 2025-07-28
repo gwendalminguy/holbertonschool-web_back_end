@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 8-make_multiplier.py
-Module containing function returning a tuple.
+Module containing function returning a function.
 """
 from typing import Callable
 
