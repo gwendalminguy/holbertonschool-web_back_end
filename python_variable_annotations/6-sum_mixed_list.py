@@ -6,7 +6,7 @@ Module containing function to compute the sum of a float and int list.
 from typing import List, Union
 
 
-def sum_mixed_list(mxd_lst: List[Union[float, int]]) -> float:
+def sum_mixed_list(mxd_lst: List[Union[int, float]]) -> float:
     """
     Computes the sum of a float and int list.
     """
