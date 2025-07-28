@@ -5,7 +5,7 @@ Module containing function to compute a sum.
 """
 
 
-def add(a: int, b: int) -> int:
+def add(a: float, b: float) -> float:
     """
     Computes the sum of two integers.
     """
