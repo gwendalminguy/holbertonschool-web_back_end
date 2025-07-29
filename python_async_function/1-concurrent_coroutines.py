@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 1-concurrent_coroutines.py
-Module containing an asynchronous rcoroutine.
+Module containing an asynchronous coroutine.
 """
 import asyncio
 import random
