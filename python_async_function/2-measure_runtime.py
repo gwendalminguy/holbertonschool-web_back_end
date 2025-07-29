@@ -11,7 +11,7 @@ import time
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-def measure_time(n: int, max_delay: int = 10) -> List[float]:
+def measure_time(n: int, max_delay: int = 10) -> float:
     """
     Executes wait_random n times.
     """
@@ -20,5 +20,5 @@ def measure_time(n: int, max_delay: int = 10) -> List[float]:
     end: float = time.time()
 
     length: float = end - start
-    
+
     return length / n
