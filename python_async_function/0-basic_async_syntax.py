@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 0-basic_async_syntax.py
-Module containing an asynchronous rcoroutine.
+Module containing an asynchronous coroutine.
 """
 import asyncio
 import random
