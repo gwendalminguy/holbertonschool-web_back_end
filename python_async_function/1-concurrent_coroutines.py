@@ -5,11 +5,12 @@ Module containing an asynchronous rcoroutine.
 """
 import asyncio
 import random
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int = 10) -> float:
+async def wait_n(n: int, max_delay: int = 10) -> List[float]:
     """
     Executes wait_random n times.
     """
