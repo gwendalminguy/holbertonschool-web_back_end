@@ -14,7 +14,7 @@ async def wait_n(n: int, max_delay: int = 10) -> List[float]:
     """
     Executes wait_random n times.
     """
-    delays = []
+    delays: List[float] = []
     for i in range(n):
         x = await wait_random(max_delay)
         j = 0
