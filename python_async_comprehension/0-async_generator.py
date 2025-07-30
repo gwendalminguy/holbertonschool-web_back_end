@@ -3,9 +3,9 @@
 0-async_generator.py
 Module containing an asynchronous coroutine.
 """
-import time
-import random
 from typing import List, Generator
+import random
+import asyncio
 
 
 async def async_generator() -> List[float]:
@@ -14,6 +14,6 @@ async def async_generator() -> List[float]:
     """
     x: float
     for i in range(10):
-        time.sleep(1)
+        await asyncio.sleep(1)
         x = random.uniform(0, 10)
         yield(x)
