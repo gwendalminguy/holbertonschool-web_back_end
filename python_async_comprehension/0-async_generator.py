@@ -12,7 +12,7 @@ async def async_generator() -> List[float]:
     """
     Waits for a 10 seconds and yields 10 numbers.
     """
-    x: float
+    x: List[float]
     for i in range(10):
         await asyncio.sleep(1)
         x = random.uniform(0, 10)
