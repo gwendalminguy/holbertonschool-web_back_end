@@ -10,9 +10,9 @@ import asyncio
 async_generator = __import__('0-async_generator').async_generator
 
 
-async def async_comprehension() -> Generator[float, None, None]:
+async def async_comprehension() -> List[float]:
     """
     Waits for 10 seconds and yields 10 numbers.
     """
-    result: List = [x  async for x in async_generator()]
+    result: List[float] = [x  async for x in async_generator()]
     return result
