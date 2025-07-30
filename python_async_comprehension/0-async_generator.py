@@ -8,7 +8,7 @@ import random
 import asyncio
 
 
-async def async_generator() -> Generator[float, None, List[float]]:
+async def async_generator() -> Generator[float, None, None]:
     """
     Waits for 10 seconds and yields 10 numbers.
     """
