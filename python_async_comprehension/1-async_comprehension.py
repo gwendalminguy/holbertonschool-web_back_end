@@ -14,5 +14,5 @@ async def async_comprehension() -> List[float]:
     """
     Waits for 10 seconds and yields 10 numbers.
     """
-    result: List[float] = [x  async for x in async_generator()]
+    result: List[float] = [x async for x in async_generator()]
     return result
