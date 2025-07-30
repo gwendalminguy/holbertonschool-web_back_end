@@ -3,12 +3,12 @@
 0-async_generator.py
 Module containing an asynchronous coroutine.
 """
-from typing import List, Generator
+from typing import Generator, List
 import random
 import asyncio
 
 
-async def async_generator() -> List[float]:
+async def async_generator() -> Generator[float, None, List[float]]:
     """
     Waits for 10 seconds and yields 10 numbers.
     """
