@@ -3,6 +3,8 @@
 2-measure_runtime.py
 Module containing an asynchronous coroutine.
 """
+from typing import Generator, List
+import random
 import asyncio
 import time
 
@@ -23,6 +25,5 @@ async def measure_runtime() -> float:
     )
 
     end: float = time.time()
-    length: float(end - start)
 
-    return length
+    return end - start
