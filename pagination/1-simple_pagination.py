@@ -38,15 +38,14 @@ class Server:
         assert page > 0
         assert page_size > 0
         
-        with open(self.DATA_FILE, 'r') as file:
-            csv_file = csv.reader(file)
-            start, end = index_range(page, page_size)
-            rows = list(csv_file)
-            if start + 1 < len(rows) and end + 1 < len(rows):
-                results = []
-                for i in range(end - start):
-                    results.append(rows[start + i + 1])
-                return results
+        self.__dataset = self.dataset()
+        
+        start, end = index_range(page, page_size)
+        results = []
+        if start < len(self.__dataset) and end < len(self.__dataset):
+            for i in range(end - start):
+                results.append(self.__dataset[start + i + 1])
+        return results
 
 
 def index_range(page: int, page_size: int) -> tuple:
