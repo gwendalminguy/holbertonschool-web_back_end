@@ -49,7 +49,7 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        ...
+        Creates a dictionary with paginated results from a CSV file.
         """
         assert isinstance(page, int)
         assert isinstance(page_size, int)
