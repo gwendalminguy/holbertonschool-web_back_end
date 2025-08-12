@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-0-simple_helper_function.py
-Module containing the function index_range.
+2-hypermedia_pagination.py
+Module containing the class Server.
 """
 import csv
 import math
