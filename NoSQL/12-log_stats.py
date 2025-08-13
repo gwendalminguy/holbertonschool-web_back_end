@@ -28,7 +28,10 @@ def main():
     cursor = nginx_collection.find({'path': '/status'})
     status = len(list(cursor))
 
-    total = get_count + post_count + put_count + patch_count + delete_count
+    cursor = nginx_collection.find()
+    total = len(list(cursor))
+
+    # total = get_count + post_count + put_count + patch_count + delete_count
 
     print('{} logs'.format(total))
     print('Method:')
