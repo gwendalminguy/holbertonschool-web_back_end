@@ -34,7 +34,7 @@ def main():
     # total = get_count + post_count + put_count + patch_count + delete_count
 
     print('{} logs'.format(total))
-    print('Method:')
+    print('Methods:')
     print('\tmethod GET: {}'.format(get_count))
     print('\tmethod POST: {}'.format(post_count))
     print('\tmethod PUT: {}'.format(put_count))
