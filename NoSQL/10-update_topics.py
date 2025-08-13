@@ -9,6 +9,6 @@ def update_topics(mongo_collection, name, topics):
     """
     Changes all topics of a school based on the name.
     """
-    document = { 'name': name }
-    values = { '$set': { 'topics': [topic for topic in topics] } }
+    document = {'name': name}
+    values = {'$set': {'topics': [topic for topic in topics]}}
     mongo_collection.update_one(document, values)
