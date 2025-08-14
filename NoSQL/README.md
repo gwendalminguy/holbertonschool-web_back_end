@@ -28,4 +28,10 @@ This project is about learning to use MongoDB and pymongo.
 
 * [12-log_stats.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/NoSQL/12-log_stats.py)
 
+* [100-find](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/NoSQL/100-find)
+
+* [101-students.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/NoSQL/101-students.py)
+
+* [102-log_stats.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/NoSQL/102-log_stats.py)
+
 * [dump.zip](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/NoSQL/dump.zip)
