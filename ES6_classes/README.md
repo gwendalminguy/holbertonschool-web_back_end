@@ -23,3 +23,5 @@ This project is about learning ES6 classes.
 * [9-hoisting.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_classes/9-hoisting.js)
 
 * [10-car.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_classes/10-car.js)
+
+* [100-evcar.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_classes/100-evcar.js)
