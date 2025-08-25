@@ -5,11 +5,11 @@ export default function cleanSet(set, startString) {
   if (startString) {
     for (const element of set) {
       if (element.startsWith(startString)) {
-		if (result) {
+        if (result) {
           result = `${result}-${element.substring(size)}`;
-		} else {
+        } else {
           result = element.substring(size);
-		}
+        }
       }
     }
   }
