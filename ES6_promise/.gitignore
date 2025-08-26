@@ -142,3 +142,4 @@ vite.config.ts.timestamp-*
 .eslintrc.js
 babel.config.js
 package*.json
+utils.js
