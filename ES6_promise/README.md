@@ -23,3 +23,5 @@ This project is about learning ES6 promises.
 * [8-try.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_promise/8-try.js)
 
 * [9-try.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_promise/9-try.js)
+
+* [100-await.js](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/ES6_promise/100-await.js)
