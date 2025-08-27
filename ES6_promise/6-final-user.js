@@ -12,7 +12,7 @@ function handleResults(results) {
     } else {
       array.push({
         status: element.status,
-        value: element.error,
+        value: element.reason.message,
       });
     }
   }
