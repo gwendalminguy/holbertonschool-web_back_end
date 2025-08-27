@@ -12,7 +12,7 @@ function handleResults(results) {
     } else {
       array.push({
         status: element.status,
-        value: element.reason.message,
+        value:  `${element.reason.name}: ${element.reason.message}`,
       });
     }
   }
