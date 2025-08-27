@@ -4,10 +4,17 @@ import uploadPhoto from './5-photo-reject';
 function handleResults(results) {
   const array = [];
   for (const element of results) {
-    array.push({
-      status: element.status,
-      value: element.value,
-    });
+    if (element.value) {
+      array.push({
+        status: element.status,
+        value: element.value,
+      });
+    } else {
+      array.push({
+        status: element.status,
+        value: element.error,
+      });
+    }
   }
   return array;
 }
