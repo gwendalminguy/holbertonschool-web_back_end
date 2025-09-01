@@ -10,7 +10,7 @@ rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
 });
 
 rl.on('close', () => {
-  if (!process.stdin.setRawMode) {
+  if (process.stdin.setRawMode) {
     console.log('This important software is now closing');
   }
 });
