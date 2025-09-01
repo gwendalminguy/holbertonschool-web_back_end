@@ -11,7 +11,7 @@ const app = http.createServer(async (req, res) => {
   } else if (url === '/students') {
     await countStudents(file)
       .then((data) => res.end(`This is the list of our students\n${data}`))
-      .catch((err) => res.end(`Error: ${err.message}`));
+      .catch((err) => res.end(err.toString()));
   }
 });
 
