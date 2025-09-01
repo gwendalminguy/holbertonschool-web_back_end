@@ -28,10 +28,14 @@ async function countStudents(path) {
       }
     }
 
-    console.log(`Number of students: ${total}`);
+    let result = `Number of students: ${total}`;
+
     for (const [key] of Object.entries(fields)) {
-      console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
+      result = result + `\nNumber of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`;
     }
+
+    console.log(result);
+    return result;
   });
 }
 
