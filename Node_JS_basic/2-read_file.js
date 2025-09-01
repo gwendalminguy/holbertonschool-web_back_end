@@ -7,24 +7,22 @@ function countStudents(path) {
     }
 
     const content = data.split('\n');
-    const CSStudents = [];
-    const SWEStudents = [];
+    const fields = {};
+    let total = 0;
 
     for (let i = 1; i < content.length; i += 1) {
       const [firstname, , , field] = content[i].split(',');
-      if (field === 'CS') {
-        CSStudents.push(firstname);
-      } else if (field === 'SWE') {
-        SWEStudents.push(firstname);
+      if (!(field in fields)) {
+        fields[field] = [];
       }
+      fields[field].push(firstname);
+      total += 1;
     }
 
-    const stringCS = CSStudents.join(', ');
-    const stringSWE = SWEStudents.join(', ');
-
-    console.log(`Number of students: ${CSStudents.length + SWEStudents.length}`);
-    console.log(`Number of students in CS: ${CSStudents.length}. List: ${stringCS}`);
-    console.log(`Number of students in SWE: ${SWEStudents.length}. List: ${stringSWE}`);
+    console.log(`Number of students: ${total}`);
+    for (element in fields) {
+      console.log(`Number of students in ${element}: ${fields[element].length}. List: ${fields[element].join(', ')}`)
+    }
   });
 }
 
