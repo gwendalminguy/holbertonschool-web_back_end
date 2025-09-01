@@ -12,16 +12,20 @@ function countStudents(path) {
 
     for (let i = 1; i < content.length; i += 1) {
       const [firstname, , , field] = content[i].split(',');
-      if (!(field in fields)) {
+
+      if (!(field in fields) && field) {
         fields[field] = [];
       }
-      fields[field].push(firstname);
-      total += 1;
+
+      if (field) {
+        fields[field].push(firstname);
+        total += 1;
+      }
     }
 
     console.log(`Number of students: ${total}`);
-    for (element in fields) {
-      console.log(`Number of students in ${element}: ${fields[element].length}. List: ${fields[element].join(', ')}`)
+    for (const [key] of Object.entries(fields)) {
+      console.log(`Number of students in ${key}: ${fields[key].length}. List: ${fields[key].join(', ')}`);
     }
   });
 }
