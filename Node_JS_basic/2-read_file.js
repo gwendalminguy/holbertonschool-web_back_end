@@ -11,7 +11,7 @@ function countStudents(path) {
     const SWEStudents = [];
 
     for (let i = 1; i < content.length; i += 1) {
-      const [firstname, lastname, age, field] = content[i].split(',');
+      const [firstname, , , field] = content[i].split(',');
       if (field === 'CS') {
         CSStudents.push(firstname);
       } else if (field === 'SWE') {
