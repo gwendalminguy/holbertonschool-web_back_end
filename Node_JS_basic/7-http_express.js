@@ -9,11 +9,11 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', async (req, res) => {
+app.get('/students', (req, res) => {
   const file = process.argv[2];
 
   res.set('Content-Type', 'text/plain');
-  await countStudents(file)
+  countStudents(file)
     .then((data) => res.send(`This is the list of our students\n${data}`))
     .catch((err) => res.send(err.toString()));
 });
