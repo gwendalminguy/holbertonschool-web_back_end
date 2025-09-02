@@ -6,7 +6,7 @@ class StudentsController {
     readDatabase(process.argv[2])
       .then((data) => {
         let result = 'This is the list of our students';
-        for (const [key] of Object.entries(data)) {
+        for (const [key] of Object.entries(data).sort()) {
           result += `\nNumber of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}`;
         }
         res.status(200).send(result);
