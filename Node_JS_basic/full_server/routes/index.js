@@ -6,19 +6,19 @@ const router = new Router();
 
 router.get('/', (req, res) => {
   res.set('Content-Type', 'application/json');
-  const data = AppController.getHomepage(req, res);
+  const data = AppController.getHomepage();
   res.status(data.status).send(data.body);
 });
 
 router.get('/students', (req, res) => {
   res.set('Content-Type', 'application/json');
-  StudentsController.getAllStudents(req, res)
+  StudentsController.getAllStudents()
     .then((data) => res.status(data.status).send(data.body));
 });
 
 router.get('/students/:major', (req, res) => {
   res.set('Content-Type', 'application/json');
-  StudentsController.getAllStudentsByMajor(req, res, req.params.major)
+  StudentsController.getAllStudentsByMajor(req.params.major)
     .then((data) => res.status(data.status).send(data.body));
 });
 
