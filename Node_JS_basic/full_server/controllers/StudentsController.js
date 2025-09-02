@@ -2,7 +2,7 @@ import readDatabase from '../utils';
 
 class StudentsController {
   static getAllStudents() {
-    return readDatabase('database.csv')
+    return readDatabase(process.argv[2])
       .then((data) => {
         let result = 'This is the list of our students';
         for (const [key] of Object.entries(data)) {
@@ -21,7 +21,7 @@ class StudentsController {
   }
 
   static getAllStudentsByMajor(major) {
-    return readDatabase('database.csv')
+    return readDatabase(process.argv[2])
       .then((data) => {
         if (Object.keys(data).includes(major)) {
           const result = `List: ${data[major].join(', ')}`;
