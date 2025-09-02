@@ -29,5 +29,4 @@ async function readDatabase(path) {
     return result;
   });
 }
-
-module.exports = readDatabase;
+export default readDatabase;
