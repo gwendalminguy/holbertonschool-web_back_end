@@ -1,9 +1,7 @@
 class AppController {
-  static getHomepage() {
-    return {
-      status: 200,
-      body: 'Hello Holberton School!',
-    };
+  static getHomepage(req, res) {
+    res.set('Content-Type', 'application/json');
+    res.status(200).send('Hello Holberton School!');
   }
 }
 

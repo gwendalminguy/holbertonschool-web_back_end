@@ -1,44 +1,31 @@
 import readDatabase from '../utils';
 
 class StudentsController {
-  static getAllStudents() {
-    return readDatabase(process.argv[2])
+  static getAllStudents(req, res) {
+    res.set('Content-Type', 'application/json');
+    readDatabase(process.argv[2])
       .then((data) => {
         let result = 'This is the list of our students';
         for (const [key] of Object.entries(data)) {
           result += `\nNumber of students in ${key}: ${data[key].length}. List: ${data[key].join(', ')}`;
         }
-
-        return {
-          status: 200,
-          body: result,
-        };
+        res.status(200).send(result);
       })
-      .catch(() => ({
-        status: 500,
-        body: 'Cannot load the database',
-      }));
+      .catch(() => res.status(500).send('Cannot load the database'));
   }
 
-  static getAllStudentsByMajor(major) {
-    return readDatabase(process.argv[2])
+  static getAllStudentsByMajor(req, res) {
+    res.set('Content-Type', 'application/json');
+    readDatabase(process.argv[2])
       .then((data) => {
-        if (Object.keys(data).includes(major)) {
-          const result = `List: ${data[major].join(', ')}`;
-          return {
-            status: 200,
-            body: result,
-          };
+        if (Object.keys(data).includes(req.params.major)) {
+          const result = `List: ${data[req.params.major].join(', ')}`;
+          res.status(200).send(result);
+        } else {
+          res.status(500).send('Major parameter must be CS or SWE');
         }
-        return {
-          status: 500,
-          body: 'Major parameter must be CS or SWE',
-        };
       })
-      .catch(() => ({
-        status: 500,
-        body: 'Cannot load the database',
-      }));
+      .catch(() => res.status(500).send('Cannot load the database'));
   }
 }
 
