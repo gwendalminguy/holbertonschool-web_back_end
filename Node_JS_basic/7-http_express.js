@@ -11,7 +11,6 @@ app.get('/', (req, res) => {
 
 app.get('/students', async (req, res) => {
   const file = process.argv[2];
-  const { url } = req;
 
   res.set('Content-Type', 'text/plain');
   await countStudents(file)
