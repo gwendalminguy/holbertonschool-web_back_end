@@ -15,7 +15,6 @@ app.get('/students', (req, res) => {
   res.set('Content-Type', 'text/plain');
   countStudents(file)
     .then((data) => res.send(`This is the list of our students\n${data}`))
-    .catch((err) => res.send(err.toString()));
 });
 
 app.listen(port, () => {
