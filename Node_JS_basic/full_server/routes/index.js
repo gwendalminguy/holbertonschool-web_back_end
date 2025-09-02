@@ -5,21 +5,15 @@ import StudentsController from '../controllers/StudentsController';
 const router = new Router();
 
 router.get('/', (req, res) => {
-  res.set('Content-Type', 'application/json');
-  const data = AppController.getHomepage();
-  res.status(data.status).send(data.body);
+  AppController.getHomepage(req, res);
 });
 
 router.get('/students', (req, res) => {
-  res.set('Content-Type', 'application/json');
-  StudentsController.getAllStudents()
-    .then((data) => res.status(data.status).send(data.body));
+  StudentsController.getAllStudents(req, res);
 });
 
 router.get('/students/:major', (req, res) => {
-  res.set('Content-Type', 'application/json');
-  StudentsController.getAllStudentsByMajor(req.params.major)
-    .then((data) => res.status(data.status).send(data.body));
+  StudentsController.getAllStudentsByMajor(req, res);
 });
 
 module.exports = router;
