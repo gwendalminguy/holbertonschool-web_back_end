@@ -2,7 +2,6 @@ import readDatabase from '../utils';
 
 class StudentsController {
   static getAllStudents(req, res) {
-    res.set('Content-Type', 'application/json');
     readDatabase(process.argv[2])
       .then((data) => {
         let result = 'This is the list of our students';
@@ -15,7 +14,6 @@ class StudentsController {
   }
 
   static getAllStudentsByMajor(req, res) {
-    res.set('Content-Type', 'application/json');
     readDatabase(process.argv[2])
       .then((data) => {
         if (Object.keys(data).includes(req.params.major)) {
