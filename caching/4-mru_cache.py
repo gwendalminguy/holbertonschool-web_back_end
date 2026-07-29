@@ -18,7 +18,7 @@ class MRUCache(BaseCaching):
             current_size = len(self.cache_data)
 
             # Discard item only if it is new and maximum cache size is reachded
-            if key not in self.cache_data and len(self.cache_data) >= self.MAX_ITEMS:
+            if key not in self.cache_data and current_size >= self.MAX_ITEMS:
                 self.discard()
 
             # Recreate element on update to keep cache order right
