@@ -26,13 +26,14 @@ class LFUCache(BaseCaching):
         if key is not None and item is not None:
             current_size = len(self.cache_data)
 
-            # Discard only if item is new and maximum cache size is reachded
+            # Discard item only if it is new and maximum cache size is reachded
             if key not in self.cache_data and current_size >= self.MAX_ITEMS:
                 self.discard()
 
             # Recreate element on update to keep cache order right
-            if key in self.cache_data:
-                content = self.cache_data.pop(key)
+            content = self.cache_data.pop(key, None)
+
+            if content is not None:
                 access_count += content["access_count"]
 
             self.cache_data[key] = {
