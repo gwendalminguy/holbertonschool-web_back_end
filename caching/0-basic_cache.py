@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-""" 
+"""
 0-basic_cache.py
 Basic Cache module
 """
 BaseCaching = __import__('base_caching').BaseCaching
+
 
 class BasicCache(BaseCaching):
     """

@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-""" 
+"""
 base_caching.py
 BaseCaching module
 """
+
 
 class BaseCaching():
     """
@@ -30,10 +31,10 @@ class BaseCaching():
         """
         Add an item in the cache.
         """
-        raise NotImplementedError("put must be implemented in your cache class")
+        raise NotImplementedError("Put must be implemented.")
 
     def get(self, key):
         """
         Get an item by key.
         """
-        raise NotImplementedError("get must be implemented in your cache class")
+        raise NotImplementedError("Get must be implemented.")
