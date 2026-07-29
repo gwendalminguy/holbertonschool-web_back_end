@@ -8,7 +8,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 class FIFOCache(BaseCaching):
     """
-    BasicCache defines a simple cache.
+    FIFOCache defines a simple FIFO cache.
     """
     def put(self, key, item):
         """
