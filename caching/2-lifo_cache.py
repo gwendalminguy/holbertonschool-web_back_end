@@ -14,14 +14,14 @@ class LIFOCache(BaseCaching):
         """
         Add or update an element to the cache.
         """
-        if key and item:
+        if key is not None and item is not None:
             current_size = len(self.cache_data)
 
             # Discard only if item is new and maximum cache size is reachded
             if key not in self.cache_data and current_size >= self.MAX_ITEMS:
                 self.discard()
 
-            # Recreate element on update to keep cahce order right
+            # Recreate element on update to keep cache order right
             if key in self.cache_data:
                 self.cache_data.pop(key)
 
@@ -41,6 +41,6 @@ class LIFOCache(BaseCaching):
         """
         item = next(reversed(self.cache_data), None)
 
-        if item:
+        if item is not None:
             self.cache_data.pop(item)
             print(f"DISCARD: {item}")
