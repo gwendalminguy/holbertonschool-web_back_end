@@ -16,6 +16,8 @@ This project is about learning to work with caching.
 
 * [4-mru_cache.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/caching/4-mru_cache.py), a class implementing a MRU cache.
 
+* [100-lfu_cache.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/caching/100-lfu_cache.py), a class implementing a LFU cache.
+
 ### Policies
 
 A caching system usually implements a [Cache Replacement Policy](https://en.wikipedia.org/wiki/Cache_replacement_policies). The chosen policy will define which element to discard in the cache when the cache reaches its maximum capacity. The goal is to make the best use of the available memor, while maximizing cache efficiency.
@@ -26,3 +28,4 @@ A caching system usually implements a [Cache Replacement Policy](https://en.wiki
 | [LIFO](https://en.wikipedia.org/wiki/Cache_replacement_policies#Last_in_first_out_(LIFO)_or_First_in_last_out_(FILO)) | **Last In First Out**: discarding the most recently inserted element. |
 | [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)) | **Least Recently Used**: discarding the least recently accessed element. |
 | [MRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_Recently_Used_(MRU)) | **Most Recently Used**: discarding the most recently accessed element. |
+| [LFU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_frequently_used_(LFU)) | **Least Frequently Used**: discarding the least frequently accessed element. |
