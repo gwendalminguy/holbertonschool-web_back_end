@@ -10,7 +10,8 @@ class BasicCache(BaseCaching):
         """
         Add or update an element to the cache.
         """
-        self.cache_data[key] = item
+        if key and item:
+            self.cache_data[key] = item
 
     def get(self, key):
         """
