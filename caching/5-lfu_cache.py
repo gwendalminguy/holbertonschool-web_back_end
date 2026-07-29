@@ -10,6 +10,15 @@ class LFUCache(BaseCaching):
     """
     LFUCache defines a simple LFU cache.
     """
+    def print_cache(self):
+        """
+        Print the cache
+        Overwrite the BaseCaching method to adapt to LFU dictionary.
+        """
+        print("Current cache:")
+        for key in sorted(self.cache_data.keys()):
+            print("{}: {}".format(key, self.cache_data.get(key).get("data")))
+
     def put(self, key, item, access_count=0):
         """
         Add or update an element to the cache.
