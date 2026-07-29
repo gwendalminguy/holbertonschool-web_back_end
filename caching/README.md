@@ -1,10 +1,10 @@
 ## Caching
 
-This project is about learning to work with caching.
+This project is about learning to implement caching systems.
 
 ### Files
 
-* [base_caching.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/caching/base_caching.py), an abstract class implementing a base to create a cache class.
+* [base_caching.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/caching/base_caching.py), an abstract class implementing a base to create a caching class.
 
 * [0-basic_cache.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/caching/0-basic_cache.py), a class implementing a basic cache.
 
