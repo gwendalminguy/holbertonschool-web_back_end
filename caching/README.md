@@ -18,11 +18,11 @@ This project is about learning to work with caching.
 
 ### Policies
 
-A caching system usually implements a [Cache Replacement Policy](https://en.wikipedia.org/wiki/Cache_replacement_policies). The chosen policy will define which element to discard in the cache when the maximum allowed size is reached, to optimize memory usage. The most common policies are the following:
+A caching system usually implements a [Cache Replacement Policy](https://en.wikipedia.org/wiki/Cache_replacement_policies). The chosen policy will define which element to discard in the cache when the cache reaches its maximum capacity. The goal is to make the best use of the available memor, while maximizing cache efficiency.
 
 | **Name** | **Description** |
 | :------- | :-------------- |
-| [FIFO](https://en.wikipedia.org/wiki/Cache_replacement_policies#First_in_first_out_(FIFO)) | **First In First Out**, a policy that disards the oldest modified element. |
-| [LIFO](https://en.wikipedia.org/wiki/Cache_replacement_policies#Last_in_first_out_(LIFO)_or_First_in_last_out_(FILO)) | **Last In First Out**, a policy that disards the most recently modified element. |
-| [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)) | **Least Recently Used**, a policy that disards the least recently retrieved element. |
-| [MRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_Recently_Used_(MRU)) | **Most Recently Used**, a policy that disards the most recently modified element. |
+| [FIFO](https://en.wikipedia.org/wiki/Cache_replacement_policies#First_in_first_out_(FIFO)) | **First In First Out**: discarding the oldest inserted element. |
+| [LIFO](https://en.wikipedia.org/wiki/Cache_replacement_policies#Last_in_first_out_(LIFO)_or_First_in_last_out_(FILO)) | **Last In First Out**: discarding the most recently inserted element. |
+| [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)) | **Least Recently Used**: discarding the least recently accessed element. |
+| [MRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Most_Recently_Used_(MRU)) | **Most Recently Used**: discarding the most recently accessed element. |
