@@ -21,6 +21,10 @@ class FIFOCache(BaseCaching):
             if key not in self.cache_data and current_size >= self.MAX_ITEMS:
                 self.discard()
 
+            # Recreate element on update to keep cahce order right
+            if key in self.cache_data:
+                self.cache_data.pop(key)
+
             self.cache_data[key] = item
 
     def get(self, key):
