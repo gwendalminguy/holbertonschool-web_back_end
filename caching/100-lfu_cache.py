@@ -60,7 +60,10 @@ class LFUCache(BaseCaching):
         """
         Discard least frequently accessed element in cache.
         """
-        item = sorted(self.cache_data.items(), key=lambda item: item[1]["access_count"])[0][0]
+        item = sorted(
+            self.cache_data.items(),
+            key=lambda item: item[1]["access_count"]
+        )[0][0]
 
         if item is not None:
             self.cache_data.pop(item)
