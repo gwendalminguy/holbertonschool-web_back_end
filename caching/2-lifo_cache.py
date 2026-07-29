@@ -37,7 +37,7 @@ class LIFOCache(BaseCaching):
 
     def discard(self):
         """
-        Discard most recent element created in cache.
+        Discard most recent element created or updated in cache.
         """
         item = next(reversed(self.cache_data), None)
 

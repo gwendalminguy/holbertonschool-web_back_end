@@ -37,7 +37,7 @@ class FIFOCache(BaseCaching):
 
     def discard(self):
         """
-        Discard oldest element created in cache.
+        Discard oldest element created or updated in cache.
         """
         item = next(iter(self.cache_data), None)
 
