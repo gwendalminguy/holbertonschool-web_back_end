@@ -113,10 +113,14 @@ def main():
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users;")
 
+    # Retrieve table column names
     columns = [item[0] for item in cursor.description]
 
     for row in cursor:
+        # Transform each row into concatenated string with expected format
         data = "".join([f"{col}={row[i]}; " for i, col in enumerate(columns)])
+
+        # Log the row
         logger.info(data)
 
     cursor.close()
