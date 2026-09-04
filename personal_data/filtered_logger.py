@@ -8,6 +8,8 @@ from typing import List
 import logging
 import re
 
+PII_FIELDS = ("email", "phone", "ssn", "password", "ip")
+
 
 def filter_datum(
     fields: List[str],
@@ -24,7 +26,7 @@ def filter_datum(
     - message: concatenated string of key-value pairs with a separator
     - separator: string indicating the delimiter used
 
-    Return: result as a concatenated string obfuscated
+    Return: the result as a concatenated string obfuscated
     """
     p = r"=.*?(?=" + re.escape(separator) + r")"
 
@@ -54,3 +56,24 @@ class RedactingFormatter(logging.Formatter):
         f = super().format(record)
 
         return filter_datum(self.fields, self.REDACTION, f, self.SEPARATOR)
+
+
+def get_logger() -> logging.Logger:
+    """
+    Configure a named logger at INFO level with a redacting formatter.
+
+    Return: a configured logging.Logger object
+    """
+    # Creation and configuration of the logger
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+    # Creation of the handler and formatter
+    handler = logging.StreamHandler()
+    formatter = RedactingFormatter(PII_FIELDS)
+    handler.setFormatter(formatter)
+
+    logger.addHandler(handler)
+
+    return logger
