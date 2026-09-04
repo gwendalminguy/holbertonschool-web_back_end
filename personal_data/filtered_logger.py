@@ -3,6 +3,8 @@
 filtered_logger.py
 Module containing the function filter_datum.
 """
+from typing import List
+
 import re
 
 
