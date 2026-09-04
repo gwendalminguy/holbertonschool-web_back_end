@@ -100,3 +100,28 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
     return connection
+
+
+def main():
+    """
+    Read users from a database and log informations with obfuscated PII fields.
+    """
+    logger = get_logger()
+
+    db = get_db()
+
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+
+    columns = [item[0] for item in cursor.description]
+
+    for row in cursor:
+        data = "".join([f"{col}={row[i]}; " for i, col in enumerate(columns)])
+        logger.info(data)
+
+    cursor.close()
+    db.close()
+
+
+if __name__ == "__main__":
+    main()
