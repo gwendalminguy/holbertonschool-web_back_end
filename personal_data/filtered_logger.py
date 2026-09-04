@@ -13,7 +13,15 @@ def filter_datum(
     separator: str
 ) -> str:
     """
-    Obfuscate every value in 'message' matching 'fields' keys with 'redaction'.
+    Obfuscate data using a given redation.
+
+    Parameters:
+    - fields: list of keys whose values must be obfuscated
+    - redaction: string to use for obfuscation
+    - message: concatenated string of key-value pairs with a separator
+    - separator: string indicating the delimiter used
+
+    Return: result as a concatenated string obfuscated
     """
     p = r"=.*?(?=" + re.escape(separator) + r")"
 
