@@ -51,6 +51,6 @@ class RedactingFormatter(logging.Formatter):
         """
         Format and filter a given record to return it redacted.
         """
-        formatted = super().format(record)
+        f = super().format(record)
 
-        return filter_datum(self.fields, self.REDACTION, formatted, self.SEPARATOR)
+        return filter_datum(self.fields, self.REDACTION, f, self.SEPARATOR)
