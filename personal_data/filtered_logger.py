@@ -15,9 +15,9 @@ def filter_datum(
     """
     Obfuscate every value in 'message' matching 'fields' keys with 'redaction'.
     """
-    r = r"=.*?(?=" + re.escape(separator) + r")"
+    p = r"=.*?(?=" + re.escape(separator) + r")"
 
     for item in fields:
-        message = re.sub(re.escape(item) + r, f"{item}={redaction};", message)
+        message = re.sub(re.escape(item) + p, f"{item}={redaction}", message)
 
     return message
