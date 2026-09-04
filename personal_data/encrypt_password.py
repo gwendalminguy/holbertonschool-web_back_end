@@ -8,7 +8,7 @@ from typing import ByteString
 import bcrypt
 
 
-def hash_password(password: str) -> ByteString:
+def hash_password(password: str) -> bytes:
     """
     Hash and salt a password.
 
