@@ -17,6 +17,16 @@ class Auth():
         """
         ...
         """
+        if path is None or excluded_paths is None :
+            return True
+
+        # Clean trailing slashes
+        clean_path = path[:-1] if path.endswith("/") else path
+        clean_excluded_paths = [p[:-1] if p.endswith("/") else p for p in excluded_paths]
+
+        if clean_path not in clean_excluded_paths:
+            return True
+
         return False
 
     def authorization_header(self, request=None) -> str:
