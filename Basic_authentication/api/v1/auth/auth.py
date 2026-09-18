@@ -17,7 +17,7 @@ class Auth():
         """
         Check wether the given path requires authentication or not.
         """
-        if path is None or excluded_paths is None :
+        if path is None or excluded_paths is None or not len(excluded_paths):
             return True
 
         # Clean trailing slashes
