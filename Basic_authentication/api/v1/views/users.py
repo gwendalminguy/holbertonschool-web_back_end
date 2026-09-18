@@ -24,7 +24,7 @@ def view_one_user(user_id: str = None) -> str:
     """
     GET /api/v1/users/:id
 
-    Parameters:
+    Path Parameters:
       - User ID
 
     Return:
@@ -41,9 +41,12 @@ def view_one_user(user_id: str = None) -> str:
 
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
 def delete_user(user_id: str = None) -> str:
-    """ DELETE /api/v1/users/:id
-    Path parameter:
+    """
+    DELETE /api/v1/users/:id
+
+    Path Parameters:
       - User ID
+
     Return:
       - empty JSON is the User has been correctly deleted
       - 404 if the User ID doesn't exist
@@ -59,12 +62,15 @@ def delete_user(user_id: str = None) -> str:
 
 @app_views.route('/users', methods=['POST'], strict_slashes=False)
 def create_user() -> str:
-    """ POST /api/v1/users/
-    JSON body:
+    """
+    POST /api/v1/users/
+
+    JSON Body:
       - email
       - password
       - last_name (optional)
       - first_name (optional)
+
     Return:
       - User object JSON represented
       - 400 if can't create the new User
@@ -97,12 +103,16 @@ def create_user() -> str:
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
 def update_user(user_id: str = None) -> str:
-    """ PUT /api/v1/users/:id
-    Path parameter:
+    """
+    PUT /api/v1/users/:id
+
+    Path Parameters:
       - User ID
-    JSON body:
+
+    JSON Body:
       - last_name (optional)
       - first_name (optional)
+
     Return:
       - User object JSON represented
       - 404 if the User ID doesn't exist
