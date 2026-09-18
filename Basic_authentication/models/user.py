@@ -2,8 +2,9 @@
 """
 User Module
 """
-import hashlib
 from models.base import Base
+
+import hashlib
 
 
 class User(Base):
