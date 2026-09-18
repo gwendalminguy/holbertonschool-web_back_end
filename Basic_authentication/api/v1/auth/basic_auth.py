@@ -24,7 +24,7 @@ class BasicAuth(Auth):
         """
         if (authorization_header is None
             or not isinstance(authorization_header, str)
-            or not authorization_header.startswith("Basic ")):
+                or not authorization_header.startswith("Basic ")):
             return None
 
         content = authorization_header.strip().split(" ")[1:]
