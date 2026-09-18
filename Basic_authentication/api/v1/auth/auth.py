@@ -21,10 +21,12 @@ class Auth():
             return True
 
         # Clean trailing slashes
-        clean_path = path[:-1] if path.endswith("/") else path
-        clean_excluded_paths = [p[:-1] if p.endswith("/") else p for p in excluded_paths]
+        path = path[:-1] if path.endswith("/") else path
+        excluded_paths = [
+            p[:-1] if p.endswith("/") else p for p in excluded_paths
+        ]
 
-        if clean_path not in clean_excluded_paths:
+        if path not in excluded_paths:
             return True
 
         return False
