@@ -29,7 +29,7 @@ class Auth():
 
         # Allow paths with wildcard
         for p in excluded_paths:
-            if p.endswith("*") and path.startswith(p):
+            if p.endswith("*") and path.startswith(p[:-1]):
                 return False
 
         if path not in excluded_paths:
