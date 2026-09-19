@@ -16,7 +16,7 @@ class SessionAuth(Auth):
     """
     SessionAuth Class
     """
-    self.user_id_by_session_id = {}
+    user_id_by_session_id = {}
 
     def create_session(self, user_id: str = None) -> str:
         """
