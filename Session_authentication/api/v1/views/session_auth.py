@@ -13,6 +13,12 @@ SESSION_NAME = os.getenv("SESSION_NAME")
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login() -> str:
+    """
+    Initiate an authentication session with credentials.
+
+    Return:
+        - the User object with the session ID in a cookie
+    """
     from api.v1.app import auth
 
     email = request.form.get("email")
