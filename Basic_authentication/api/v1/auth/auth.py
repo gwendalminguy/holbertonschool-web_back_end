@@ -22,9 +22,15 @@ class Auth():
 
         # Clean trailing slashes
         path = path[:-1] if path.endswith("/") else path
+
         excluded_paths = [
             p[:-1] if p.endswith("/") else p for p in excluded_paths
         ]
+
+        # Allow paths with wildcard
+        for p in excluded_paths:
+            if p.endswith("*") and path.startswith(p):
+                return False
 
         if path not in excluded_paths:
             return True
