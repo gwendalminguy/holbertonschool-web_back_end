@@ -6,6 +6,9 @@ from flask import request
 from typing import List, TypeVar
 
 import hashlib
+import os
+
+SESSION_NAME = os.getenv("SESSION_NAME", None)
 
 
 class Auth():
@@ -47,3 +50,15 @@ class Auth():
         ...
         """
         return None
+
+    def session_cookie(self, request=None):
+        """
+        Retrieve a cookie value from the request.
+        """
+        if (request is None
+                or SESSION_NAME is None):
+            return None
+
+        cookie = request.cookies.get(SESSION_NAME)
+
+        
