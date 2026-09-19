@@ -3,7 +3,7 @@
 SessionAuth Views Module
 """
 from api.v1.views import app_views
-from flask import abort, jsonify, request, make_response
+from flask import abort, jsonify, request
 from models.user import User
 
 import os
@@ -19,20 +19,20 @@ def login() -> str:
     pwd = request.form.get("password")
 
     if email is None or len(email) == 0:
-        abort(make_response({"error": "email missing"}, 400))
+        return jsonify({"error": "email missing"}), 400
 
     if pwd is None or len(pwd) == 0:
-        abort(make_response({"error": "password missing"}, 400))
+        return jsonify({"error": "password missing"}), 400
 
     results = User().search({"email": email})
 
     if len(results) != 1:
-        abort(make_response({"error": "no user found for this email"}, 404))
+        return jsonify({"error": "no user found for this email"}), 404
 
     user = results[0]
 
     if not user.is_valid_password(pwd):
-        abort(make_response({"error": "wrong password"}, 401))
+        return jsonify({"error": "wrong password"}), 401
 
     session_id = auth.create_session(user_id=user.id)
 
