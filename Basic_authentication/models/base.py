@@ -24,6 +24,7 @@ class Base():
         Initialize a Base instance.
         """
         s_class = str(self.__class__.__name__)
+
         if DATA.get(s_class) is None:
             DATA[s_class] = {}
 
@@ -47,6 +48,7 @@ class Base():
             return False
         if not isinstance(self, Base):
             return False
+
         return (self.id == other.id)
 
     def to_json(self, for_serialization: bool = False) -> dict:
@@ -54,6 +56,7 @@ class Base():
         Convert the object a JSON dictionary.
         """
         result = {}
+
         for key, value in self.__dict__.items():
             if not for_serialization and key[0] == '_':
                 continue
@@ -61,6 +64,7 @@ class Base():
                 result[key] = value.strftime(TIMESTAMP_FORMAT)
             else:
                 result[key] = value
+
         return result
 
     @classmethod
@@ -69,13 +73,16 @@ class Base():
         Load all objects from file.
         """
         s_class = cls.__name__
+
         file_path = ".db_{}.json".format(s_class)
         DATA[s_class] = {}
+
         if not path.exists(file_path):
             return
 
         with open(file_path, 'r') as f:
             objs_json = json.load(f)
+
             for obj_id, obj_json in objs_json.items():
                 DATA[s_class][obj_id] = cls(**obj_json)
 
@@ -85,8 +92,10 @@ class Base():
         Save all objects to file.
         """
         s_class = cls.__name__
+
         file_path = ".db_{}.json".format(s_class)
         objs_json = {}
+
         for obj_id, obj in DATA[s_class].items():
             objs_json[obj_id] = obj.to_json(True)
 
@@ -107,6 +116,7 @@ class Base():
         Remove object.
         """
         s_class = self.__class__.__name__
+
         if DATA[s_class].get(self.id) is not None:
             del DATA[s_class][self.id]
             self.__class__.save_to_file()
@@ -117,6 +127,7 @@ class Base():
         Count all objects.
         """
         s_class = cls.__name__
+
         return len(DATA[s_class].keys())
 
     @classmethod
@@ -132,6 +143,7 @@ class Base():
         Return one object by ID.
         """
         s_class = cls.__name__
+
         return DATA[s_class].get(id)
 
     @classmethod
@@ -140,6 +152,7 @@ class Base():
         Search all objects with matching attributes.
         """
         s_class = cls.__name__
+
         def _search(obj):
             if len(attributes) == 0:
                 return True
@@ -147,5 +160,5 @@ class Base():
                 if (getattr(obj, k) != v):
                     return False
             return True
-        
+
         return list(filter(_search, DATA[s_class].values()))
