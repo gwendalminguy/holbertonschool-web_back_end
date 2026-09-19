@@ -15,7 +15,8 @@ DATA = {}
 
 
 class Base():
-    """ Base class
+    """
+    Base Class
     """
 
     def __init__(self, *args: list, **kwargs: dict):
@@ -40,7 +41,7 @@ class Base():
 
     def __eq__(self, other: TypeVar('Base')) -> bool:
         """
-        Equality.
+        Check for equality.
         """
         if type(self) != type(other):
             return False
