@@ -23,6 +23,9 @@ if auth:
     elif auth.lower() == "basic_auth":
         from api.v1.auth.basic_auth import BasicAuth
         auth = BasicAuth()
+    elif auth.lower() == "session_auth":
+        from api.v1.auth.session_auth import SessionAuth
+        auth = SessionAuth()
 
 
 @app.errorhandler(401)
