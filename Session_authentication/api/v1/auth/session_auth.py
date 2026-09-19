@@ -18,7 +18,10 @@ class SessionAuth(Auth):
     """
     user_id_by_session_id = {}
 
-    def create_session(self, user_id: str = None) -> str:
+    def create_session(
+        self,
+        user_id: str = None
+    ) -> str:
         """
         Create a session ID and store it.
         """
@@ -32,7 +35,10 @@ class SessionAuth(Auth):
 
         return session_id
 
-    def user_id_for_session_id(self, session_id: str = None) -> str:
+    def user_id_for_session_id(
+        self,
+        session_id: str = None
+    ) -> str:
         """
         Retrieve a user ID based on a session ID.
         """
@@ -41,3 +47,18 @@ class SessionAuth(Auth):
             return None
 
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(
+        self,
+        request=None
+    ) -> TypeVar('User'):
+        """
+        Retrieve the current user based on a session ID.
+
+        Return:
+            - the User object
+        """
+        cookie_value = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(cookie_value)
+
+        return User.get(user_id)
