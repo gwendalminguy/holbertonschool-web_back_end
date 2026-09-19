@@ -59,6 +59,6 @@ class Auth():
                 or SESSION_NAME is None):
             return None
 
-        cookie = request.cookies.get(SESSION_NAME)
+        cookie_value = request.cookies.get(SESSION_NAME)
 
-        
+        return cookie_value
