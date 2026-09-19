@@ -64,7 +64,9 @@ class BasicAuth(Auth):
                 or ":" not in decoded_base64_authorization_header):
             return None, None
 
-        email, pwd = decoded_base64_authorization_header.strip().split(":")
+        values = decoded_base64_authorization_header.strip().split(":")
+
+        email, pwd = values[0], ":".join(values[1:])
 
         return email, pwd
 
