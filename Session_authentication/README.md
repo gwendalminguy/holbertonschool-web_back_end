@@ -9,6 +9,7 @@ This project is about working on a simple HTTP API for playing with `User` model
 * [`api/v1/app.py`](api/v1/app.py), the entry point of the API.
 * [`api/v1/auth/auth.py`](api/v1/auth/auth.py), ...
 * [`api/v1/auth/basic_auth.py`](api/v1/auth/basic_auth.py), ...
+* [`api/v1/auth/session_auth.py`](api/v1/auth/session_auth.py), ...
 * [`api/v1/views/index.py`](api/v1/views/index.py), basic endpoints of the API (`/status` and `/stats`).
 * [`api/v1/views/users.py`](api/v1/views/users.py), all users endpoints.
 
@@ -30,8 +31,9 @@ $ API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
 
 - `GET /api/v1/status`: returns the status of the API
 - `GET /api/v1/stats`: returns some stats of the API
-- `GET /api/v1/users`: returns the list of users
-- `GET /api/v1/users/:id`: returns an user based on the ID
-- `DELETE /api/v1/users/:id`: deletes an user based on the ID
+- `GET /api/v1/users`: returns the list of all users
+- `GET /api/v1/users/:id`: returns a user based on the ID
+- `GET /api/v1/users/me`: returns the current user
+- `DELETE /api/v1/users/:id`: deletes a user based on the ID
 - `POST /api/v1/users`: creates a new user (JSON parameters: `email`, `password`, `last_name` (optional) and `first_name` (optional))
-- `PUT /api/v1/users/:id`: updates an user based on the ID (JSON parameters: `last_name` and `first_name`)
+- `PUT /api/v1/users/:id`: updates a user based on the ID (JSON parameters: `last_name` and `first_name`)
