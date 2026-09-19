@@ -13,7 +13,8 @@ class User(Base):
     """
 
     def __init__(self, *args: list, **kwargs: dict):
-        """ Initialize a User instance
+        """
+        Initialize a User instance.
         """
         super().__init__(*args, **kwargs)
         self.email = kwargs.get('email')
@@ -46,7 +47,9 @@ class User(Base):
             return False
         if self.password is None:
             return False
+
         pwd_e = pwd.encode()
+
         return hashlib.sha256(pwd_e).hexdigest().lower() == self.password
 
     def display_name(self) -> str:
