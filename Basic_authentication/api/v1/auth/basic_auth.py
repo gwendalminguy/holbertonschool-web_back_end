@@ -40,13 +40,13 @@ class BasicAuth(Auth):
         ...
         """
         if (base64_authorization_header is None
-            or not isinstance(base64_authorization_header, str)):
+                or not isinstance(base64_authorization_header, str)):
             return None
 
         try:
             b = base64.b64decode(base64_authorization_header)
             decoded = b.decode('utf-8')
-        except:
+        except base64.binascii.Error:
             return None
 
         return decoded
