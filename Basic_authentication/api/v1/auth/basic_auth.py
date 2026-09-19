@@ -4,6 +4,7 @@ Auth Module
 """
 from api.v1.auth.auth import Auth
 from flask import request
+from models.user import User
 from typing import List, TypeVar
 
 import base64
@@ -20,7 +21,7 @@ class BasicAuth(Auth):
         authorization_header: str
     ) -> str:
         """
-        ...
+        Extract an authorization header.
         """
         if (authorization_header is None
             or not isinstance(authorization_header, str)
@@ -37,7 +38,7 @@ class BasicAuth(Auth):
         base64_authorization_header: str
     ) -> str:
         """
-        ...
+        Decode a Base64 encoded authorization header.
         """
         if (base64_authorization_header is None
                 or not isinstance(base64_authorization_header, str)):
@@ -56,13 +57,40 @@ class BasicAuth(Auth):
         decoded_base64_authorization_header: str
     ) -> (str, str):
         """
-        ...
+        Extract a user credentials from authorization header.
         """
         if (decoded_base64_authorization_header is None
             or not isinstance(decoded_base64_authorization_header, str)
                 or ":" not in decoded_base64_authorization_header):
             return None, None
 
-        email, pw = decoded_base64_authorization_header.strip().split(":")
+        email, pwd = decoded_base64_authorization_header.strip().split(":")
 
-        return email, pw
+        return email, pwd
+
+    def user_object_from_credentials(
+        self,
+        user_email: str,
+        user_pwd: str
+    ) -> TypeVar('User'):
+        """
+        Retrieve a user from its credentials.
+        """
+        if (user_email is None
+                or not isinstance(user_email, str)):
+            return None
+        elif (user_pwd is None
+                or not isinstance(user_pwd, str)):
+            return None
+
+        results = User().search({"email": user_email})
+
+        if len(results) != 1:
+            return None
+
+        user = results[0]
+
+        if not user.is_valid_password(user_pwd):
+            return None
+
+        return user
