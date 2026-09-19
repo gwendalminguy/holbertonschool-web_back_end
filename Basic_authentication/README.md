@@ -4,11 +4,13 @@ This project is about working on a simple HTTP API for playing with `User` model
 
 ### Files
 
-* [`models/base.py`](), base of all models of the API (handle serialization to file).
-* [`models/user.py`](), the user model.
-* [`api/v1/app.py`](), the entry point of the API.
-* [`api/v1/views/index.py`](), basic endpoints of the API (`/status` and `/stats`).
-* [`api/v1/views/users.py`](), all users endpoints.
+* [`models/base.py`](models/base.py), base of all models of the API (handle serialization to file).
+* [`models/user.py`](models/user.py), the user model.
+* [`api/v1/app.py`](api/v1/app.py), the entry point of the API.
+* [`api/v1/auth/auth.py`](api/v1/auth/auth.py), ...
+* [`api/v1/auth/basic_auth.py`](api/v1/auth/basic_auth.py), ...
+* [`api/v1/views/index.py`](api/v1/views/index.py), basic endpoints of the API (`/status` and `/stats`).
+* [`api/v1/views/users.py`](api/v1/views/users.py), all users endpoints.
 
 ### Installation
 
