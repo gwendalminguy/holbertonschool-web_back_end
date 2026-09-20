@@ -24,6 +24,8 @@ This repository focuses on back-end web development concepts.
 
 * [Caching](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/caching), a project to learn about implementing caching systems in Python.
 
-* [Personal Data](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/personal_data), a project to learn about ...
+* [Personal Data](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/personal_data), a project to learn about handling personal data through obfuscated logging and password hashing.
 
-* [Basic Authentication](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/Basic_authentication), a project to learn about ...
+* [Basic Authentication](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/Basic_authentication), a project to learn about implementing a basic authentication system.
+
+* [Session Authentication](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/Session_authentication), a project to learn about a session system for authentication.
