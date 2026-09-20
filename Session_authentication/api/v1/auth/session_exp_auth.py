@@ -27,7 +27,7 @@ class SessionExpAuth(SessionAuth):
 
         try:
             SESSION_DURATION = int(SESSION_DURATION)
-        except ValueError:
+        except (TypeError, ValueError):
             SESSION_DURATION = 0
 
         self.session_duration = SESSION_DURATION
