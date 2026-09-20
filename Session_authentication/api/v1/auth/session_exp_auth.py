@@ -34,7 +34,7 @@ class SessionExpAuth(SessionAuth):
 
     def create_session(self, user_id=None) -> str:
         """
-        ...
+        Overload method to store created_at in the session.
         """
         session_id = super().create_session(user_id)
 
@@ -52,7 +52,7 @@ class SessionExpAuth(SessionAuth):
 
     def user_id_for_session_id(self, session_id=None):
         """
-        ...
+        Overload method to return None after session expiration.
         """
         if (session_id is None
                 or session_id not in self.user_id_by_session_id.keys()):
