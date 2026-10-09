@@ -70,3 +70,21 @@ class DB:
         result = select(User).where(*filters).limit(1)
 
         return self._session.scalars(result).one()
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """
+        Update a user from its ID using arbitrary keyword arguments.
+        """
+        try:
+            db_user = self.find_user_by(id=user_id)
+        except NoResultFound:
+            return None
+
+        names = User.__table__.columns.keys()
+
+        for key, value in kwargs.items():
+            if key not in names:
+                raise ValueError(f"Unknown field: {key}")
+
+        for key, value in kwargs.items():
+            setattr(db_user, key, value)
