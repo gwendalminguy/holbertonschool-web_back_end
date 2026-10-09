@@ -29,3 +29,5 @@ This repository focuses on back-end web development concepts.
 * [Basic Authentication](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/Basic_authentication), a project to learn about implementing a basic authentication system.
 
 * [Session Authentication](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/Session_authentication), a project to learn about a session system for authentication.
+
+* [User Authentication Service](https://github.com/gwendalminguy/holbertonschool-web_back_end/blob/main/user_authentication_service), a project to learn about implementing a user authentication service.
