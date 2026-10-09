@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 
 @app.get("/")
-async def root():
-    return jsonify({"message": "Bienvenue"}, status=200)
+def root():
+    return jsonify({"message": "Bienvenue"}), 200
 
 
 if __name__ == "__main__":
