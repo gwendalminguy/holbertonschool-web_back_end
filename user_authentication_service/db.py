@@ -58,13 +58,14 @@ class DB:
 
         filters = []
 
+        # Build filters.
         for key, value in kwargs.items():
             if key not in names:
                 raise InvalidRequestError(f"Unknown field: {key}")
             filters.append(getattr(User, key) == value)
 
         if not len(filters):
-            raise InvalidRequestError("At least one keyword argument is required.")
+            raise InvalidRequestError("At least one keyword is required.")
 
         result = select(User).where(*filters).limit(1)
 
