@@ -3,9 +3,10 @@
 db.py
 DB module
 """
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, select
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import InvalidRequestError
 from sqlalchemy.orm.session import Session
 
 from user import Base, User
@@ -37,7 +38,7 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """
-        ...
+        Create and return a user.
         """
         user = User(
             email=email,
@@ -48,3 +49,23 @@ class DB:
         self._session.commit()
 
         return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """
+        Find a user using arbitrary keyword arguments.
+        """
+        names = User.__table__.columns.keys()
+
+        filters = []
+
+        for key, value in kwargs.items():
+            if key not in names:
+                raise InvalidRequestError(f"Unknown field: {key}")
+            filters.append(getattr(User, key) == value)
+
+        if not len(filters):
+            raise InvalidRequestError("At least one keyword argument is required.")
+
+        result = select(User).where(*filters).limit(1)
+
+        return self._session.scalars(result).one()
