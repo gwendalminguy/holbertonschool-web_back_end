@@ -138,5 +138,36 @@ def get_reset_password_token():
     return jsonify({"email": email, "reset_token": reset_token})
 
 
+@app.put("/reset_password")
+def update_password():
+    """
+    ...
+    """
+    data = request.form
+
+    email = data.get("email")
+    reset_token = data.get("reset_token")
+    new_password = data.get("new_password")
+
+    if email is None:
+        return jsonify({"message": "missing email"}), 400
+
+    if reset_token is None:
+        return jsonify({"message": "missing reset token"}), 400
+
+    if new_password is None:
+        return jsonify({"message": "missing new password"}), 400
+
+    try:
+        AUTH.update_password(
+            reset_token=reset_token,
+            password=new_password,
+        )
+    except ValueError:
+        abort(403)
+
+    return jsonify({"email": email, "message": "Password updated"})
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
