@@ -86,7 +86,7 @@ def logout():
     session_id = cookies.get("session_id")
 
     if session_id is None:
-        pass
+        abort(403)
 
     try:
         db_user = self._db.find_user_by(session_id=session_id)
