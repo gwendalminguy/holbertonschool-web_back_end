@@ -67,7 +67,7 @@ class Auth:
 
         return bcrypt.checkpw(password_bytes, db_user.hashed_password)
 
-    def create_session(self, email: str) -> str | None:
+    def create_session(self, email: str) -> str:
         """
         Create and store a session ID for a user.
         """
