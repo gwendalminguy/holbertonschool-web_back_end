@@ -88,9 +88,9 @@ def logout():
     if session_id is None:
         abort(403)
 
-    try:
-        db_user = self._db.find_user_by(session_id=session_id)
-    except NoResultFound:
+    db_user = self._db.get_user_from_session_id(session_id=session_id)
+
+    if db_user is None:
         abort(403)
 
     AUTH.destroy_session(user_id=db_user.id)
