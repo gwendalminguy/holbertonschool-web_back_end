@@ -3,7 +3,7 @@
 app.py
 Minimal Flask Application
 """
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, redirect
 
 from auth import Auth
 
@@ -74,6 +74,28 @@ def login():
     response.set_cookie("session_id", session_id)
 
     return response
+
+
+@app.delete("/sessions")
+def logout():
+    """
+    End an authentication session.
+    """
+    cookies = request.cookies
+
+    session_id = cookies.get("session_id")
+
+    if session_id is None:
+        pass
+
+    try:
+        db_user = self._db.find_user_by(session_id=session_id)
+    except NoResultFound:
+        abort(403)
+
+    AUTH.destroy_session(user_id=db_user.id)
+
+    redirect("/")
 
 
 if __name__ == "__main__":
