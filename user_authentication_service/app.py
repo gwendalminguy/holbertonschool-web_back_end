@@ -98,10 +98,10 @@ def logout():
     return redirect("/")
 
 
-@app.get("/profile"):
+@app.get("/profile")
 def profile():
     """
-    ...
+    Retrieve authenticated user profile.
     """
     cookies = request.cookies
 
