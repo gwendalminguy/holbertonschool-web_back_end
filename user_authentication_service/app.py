@@ -131,7 +131,7 @@ def get_reset_password_token():
         return jsonify({"message": "missing email"}), 400
 
     try:
-        reset_token = AUTH.get_reset_password_token(emal)
+        reset_token = AUTH.get_reset_password_token(email)
     except ValueError:
         abort(403)
 
