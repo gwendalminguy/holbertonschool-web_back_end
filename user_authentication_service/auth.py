@@ -85,7 +85,7 @@ class Auth:
 
         return session_id
 
-    def get_user_from_session_id(self, session_id: str) -> User | None:
+    def get_user_from_session_id(self, session_id: str) -> User:
         """
         Retrive a user by session ID.
         """
