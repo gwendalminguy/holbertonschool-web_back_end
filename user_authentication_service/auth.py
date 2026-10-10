@@ -49,7 +49,7 @@ class Auth:
 
         hashed_password = _hash_password(password)
 
-        self._db.add_user(
+        return self._db.add_user(
             email=email,
             hashed_password=hashed_password,
         )
