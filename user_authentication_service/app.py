@@ -118,10 +118,10 @@ def profile():
     return jsonify({"email": db_user.email})
 
 
-@app.get("/reset-password")
+@app.post("/reset-password")
 def get_reset_password_token():
     """
-    ...
+    Generate and store a reset password token.
     """
     data = request.form
 
