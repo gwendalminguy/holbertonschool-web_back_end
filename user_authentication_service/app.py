@@ -141,7 +141,7 @@ def get_reset_password_token():
 @app.put("/reset_password")
 def update_password():
     """
-    ...
+    Update a password.
     """
     data = request.form
 
@@ -166,7 +166,7 @@ def update_password():
     except ValueError:
         abort(403)
 
-    return jsonify({"email": email, "message": "Password updated"})
+    return jsonify({"email": email, "message": "password updated"})
 
 
 if __name__ == "__main__":
