@@ -3,8 +3,9 @@
 Generic utilities for GitHub org client.
 """
 from parameterized import parameterized
-from utils import access_nested_map
+from utils import access_nested_map, get_json
 
+import json
 import unittest
 
 
@@ -34,3 +35,24 @@ class TestAccessNestedMap(unittest.TestCase):
         """
         with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
+
+
+class TestGetJson(unittest.TestCase):
+    """
+    Unittests for get_json function.
+    """
+
+    @parameterized.expand([
+        ["http://example.com", {"payload": True}],
+        ["http://holberton.io", {"payload": False}],
+    ])
+    def test_get_json(self, url, payload):
+        """
+        Test successful cases.
+        """
+        with unittest.mock.patch("requests.get") as mock:
+            mock.return_value.json.return_value = payload
+            result = get_json(url)
+
+        mock.assert_called_once_with(url)
+        self.assertEqual(result, payload)
