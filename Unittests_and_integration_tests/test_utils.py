@@ -3,7 +3,7 @@
 Generic utilities for GitHub org client.
 """
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 
 import json
 import unittest
@@ -56,3 +56,32 @@ class TestGetJson(unittest.TestCase):
 
         mock.assert_called_once_with(url)
         self.assertEqual(result, payload)
+
+
+class TestMemoize(unittest.TestCase):
+    """
+    Unittests for memoize function.
+    """
+
+    def test_memoize(self):
+        """
+        Test successful cases.
+        """
+        class TestClass:
+
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with unittest.mock.patch.object(TestClass, "a_method", return_value=42) as mock:
+            instance = TestClass()
+
+            result_a = instance.a_property
+            result_b = instance.a_property
+
+        mock.assert_called_once()
+        self.assertEqual(result_a, 42)
+        self.assertEqual(result_b, 42)
