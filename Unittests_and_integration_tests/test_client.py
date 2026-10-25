@@ -4,6 +4,7 @@ Client tests.
 """
 from client import GithubOrgClient
 from parameterized import parameterized
+from unittest.mock import patch
 
 import json
 import unittest
@@ -18,7 +19,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ["google"],
         ["abc"],
     ])
-    @unittest.mock.patch("client.get_json", return_value={})
+    @patch("client.get_json", return_value={})
     def test_org(self, org, mock):
         """
         Test successful cases.
@@ -37,14 +38,14 @@ class TestGithubOrgClient(unittest.TestCase):
         org = "apple"
         URL = f"https://api.github.com/orgs/{org}/repos"
 
-        with unittest.mock.patch("client.GithubOrgClient.org") as mock:
+        with patch("client.GithubOrgClient.org") as mock:
             mock.return_value.json.return_value = {org: "test"}
 
         result = GithubOrgClient(org_name=org)._public_repos_url
 
         self.assertEqual(URL, result)
 
-    @unittest.mock.patch("client.get_json", return_value=[{
+    @patch("client.get_json", return_value=[{
         "name": "test"
     }])
     def test_public_repos(self, mock_get_json):
@@ -53,13 +54,15 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         org = "apple"
 
-        with unittest.mock.patch(
+        with patch(
             "client.GithubOrgClient._public_repos_url",
             new_callable=unittest.mock.PropertyMock,
-        ) as mock_public_repos_url:
-            mock_public_repos_url.return_value = "https://api.github.com/orgs/apple/repos"
+        ) as mock_url:
+            mock_url.return_value = f"https://api.github.com/orgs/{org}/repos"
             result = GithubOrgClient(org_name=org).public_repos()
 
         self.assertEqual(result, ["test"])
-        mock_get_json.assert_called_once_with(f"https://api.github.com/orgs/{org}/repos")
-        mock_public_repos_url.assert_called_once()
+        mock_get_json.assert_called_once_with(
+            f"https://api.github.com/orgs/{org}/repos"
+        )
+        mock_url.assert_called_once()
