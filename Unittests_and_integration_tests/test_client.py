@@ -29,4 +29,17 @@ class TestGithubOrgClient(unittest.TestCase):
 
         mock.assert_called_once_with(URL)
         self.assertEqual(result, {})
-        
+
+    def test_public_repos_url(self):
+        """
+        Test successful cases.
+        """
+        org = "apple"
+        URL = f"https://api.github.com/orgs/{org}/repos"
+
+        with unittest.mock.patch("client.GithubOrgClient.org") as mock:
+            mock.return_value.json.return_value = {org: "test"}
+
+        result = GithubOrgClient(org_name=org)._public_repos_url
+
+        self.assertEqual(URL, result)
