@@ -60,7 +60,7 @@ class TestGithubOrgClient(unittest.TestCase):
             new_callable=unittest.mock.PropertyMock,
         ) as mock_url:
             mock_url.return_value = f"https://api.github.com/orgs/{org}/repos"
-            result = GithubOrgClient(org_name=org).public_repos()
+            result = GithubOrgClient(org).public_repos()
 
         self.assertEqual(result, ["test"])
         mock_get_json.assert_called_once_with(
@@ -76,7 +76,7 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         Test successful cases.
         """
-        result = GithubOrgClient(org_name="test").has_license(repo, license_key)
+        result = GithubOrgClient("test").has_license(repo, license_key)
 
         self.assertEqual(has_license, result)
 
@@ -120,10 +120,17 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         ...
         """
         org_name = "google"
-        client = GithubOrgClient(org_name=org_name)
+        client = GithubOrgClient(org_name)
 
-        self.assertEqual(client.public_repos(), self.expected_repos)
-        self.assertEqual(client.public_repos(license="apache-2.0"), self.apache2_repos)
+        self.assertEqual(
+            client.public_repos(),
+            self.expected_repos
+        )
+
+        self.assertEqual(
+            client.public_repos(license="apache-2.0"),
+            self.apache2_repos
+        )
 
         self.assertEqual(self.mock.call_count, 2)
         self.mock.assert_has_calls([
