@@ -3,8 +3,9 @@
 Client tests.
 """
 from client import GithubOrgClient
-from parameterized import parameterized
-from unittest.mock import patch
+from fixtures import TEST_PAYLOAD
+from parameterized import parameterized, parameterized_class
+from unittest.mock import patch, Mock, call
 
 import json
 import unittest
@@ -12,7 +13,7 @@ import unittest
 
 class TestGithubOrgClient(unittest.TestCase):
     """
-    Unittests for access_nested_map function.
+    Unittests for GitHubOrgClient class.
     """
 
     @parameterized.expand([
@@ -78,3 +79,54 @@ class TestGithubOrgClient(unittest.TestCase):
         result = GithubOrgClient(org_name="test").has_license(repo, license_key)
 
         self.assertEqual(has_license, result)
+
+
+@parameterized_class(
+    (
+        "org_payload",
+        "repos_payload",
+        "expected_repos",
+        "apache2_repos",
+    ),
+    TEST_PAYLOAD,
+)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """
+    Integration test for GitHubOrgClient class.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.get_patcher = patch("requests.get")
+        cls.mock = cls.get_patcher.start()
+
+        response_1 = Mock()
+        response_2 = Mock()
+
+        response_1.json.return_value = cls.org_payload
+        response_2.json.return_value = cls.repos_payload
+
+        cls.mock.side_effect = [
+            response_1,
+            response_2,
+        ]
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """
+        ...
+        """
+        org_name = "google"
+        client = GithubOrgClient(org_name=org_name)
+
+        self.assertEqual(client.public_repos(), self.expected_repos)
+        self.assertEqual(client.public_repos(license="apache-2.0"), self.apache2_repos)
+
+        self.assertEqual(self.mock.call_count, 2)
+        self.mock.assert_has_calls([
+            call(f"https://api.github.com/orgs/{org_name}"),
+            call(self.org_payload["repos_url"]),
+        ])
