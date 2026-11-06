@@ -4,8 +4,10 @@ This project is about learning to parametrize translation with **i18n**.
 
 ### Files
 
-* [0-app.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/0-app.py), the entry point of the API.
+* [*-app.py](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/0-app.py), the entry point of the API.
+* [babel.cfg](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/babel.cfg), the Babel configuration file.
 * [templates/](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/templates/), the templates directory.
+* [translations/](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/translations/), the translations directory.
 * [requirements.txt](https://github.com/gwendalminguy/holbertonschool-web_back_end/tree/main/i18n/requirements.txt), the requirements file.
 
 ### Installation
