@@ -19,7 +19,7 @@ config = Config()
 
 babel = Babel(
     app,
-    locale_selector=config.LANGUAGES[0],
+    default_locale=config.LANGUAGES[0],
     timezone_selector="UTC",
 )
 
