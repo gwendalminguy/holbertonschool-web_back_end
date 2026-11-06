@@ -12,17 +12,14 @@ class Config():
     Configuration class.
     """
     LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
+app.config.from_object(Config)
 
-config = Config()
-
-babel = Babel(
-    app,
-    default_locale=config.LANGUAGES[0],
-    timezone_selector="UTC",
-)
+babel = Babel(app)
 
 
 @app.route("/")
@@ -30,7 +27,7 @@ def home():
     """
     Basic index route.
     """
-    return render_template('0-index.html')
+    return render_template('1-index.html')
 
 
 if __name__ == "__main__":
