@@ -6,6 +6,7 @@ Minimal Flask Application
 from flask import Flask, render_template
 from flask_babel import Babel
 
+
 class Config():
     """
     Configuration class.
