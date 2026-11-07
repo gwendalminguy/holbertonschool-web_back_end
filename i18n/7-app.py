@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-3-app.py
+7-app.py
 Minimal Flask Application
 """
 from flask import Flask, render_template, request, g
@@ -57,7 +57,8 @@ def get_timezone():
             return tz
         except UnknownTimeZoneError:
             pass
-    elif user_tz is not None:
+
+    if user_tz is not None:
         try:
             user_tz = timezone(user_tz)
             return user_tz
@@ -100,7 +101,7 @@ def home():
     """
     Basic index route.
     """
-    return render_template("5-index.html")
+    return render_template("7-index.html")
 
 
 if __name__ == "__main__":
