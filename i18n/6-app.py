@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-3-app.py
+6-app.py
 Minimal Flask Application
 """
 from flask import Flask, render_template, request, g
@@ -71,7 +71,7 @@ def home():
     """
     Basic index route.
     """
-    return render_template("5-index.html")
+    return render_template("6-index.html")
 
 
 if __name__ == "__main__":
