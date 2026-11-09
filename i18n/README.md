@@ -25,10 +25,15 @@ $ pip install -r requirements.txt
 To run the application:
 
 ```
-$ python3 -m app
+$ python3 app.py
 ```
 
-### Routes
+### API
 
-- **INDEX**:
+- **Routes**:
     - `GET /`: returns the index HTML template
+
+- **Query Parameters**:
+    - `locale`: specify a locale (*en*, *fr*)
+    - `timezone`: specify a timezone (*Europe/Paris*, ...)
+    - `login_as`: simulate a user (*1*, *2*, *3*, *4*)
