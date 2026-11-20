@@ -2,9 +2,10 @@
 """
 exercice.py
 """
-from redis import Redis
 from typing import Union
 from uuid import uuid4
+
+import redis
 
 
 class Cache:
@@ -15,7 +16,7 @@ class Cache:
         """
         Initialize a Redis cache.
         """
-        self._redis = Redis()
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(self, data: Union[str, bytes, int, float]) -> str:
