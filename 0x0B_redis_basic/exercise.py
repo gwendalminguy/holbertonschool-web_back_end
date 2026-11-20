@@ -3,21 +3,18 @@
 exercice.py
 """
 from functools import wraps
-from typing import Union, Optional, Callable, TypeVar, ParamSpec
+from typing import Union, Optional, Callable
 from uuid import uuid4
 
 import redis
 
-P = ParamSpec("P")
-R = TypeVar("R")
 
-
-def count_calls(method: Callable[P, R]) -> Callable[P, R]:
+def count_calls(method: Callable) -> Callable:
     """
     Decorator to count calls.
     """
     @wraps(method)
-    def wrapper(*args: P.args, **kwds: P.kwargs) -> R:
+    def wrapper(*args, **kwds):
         """
         Wrap method to count its calls.
         """
