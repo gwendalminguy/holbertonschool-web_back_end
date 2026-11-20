@@ -59,12 +59,12 @@ class Cache:
         """
         value = self._redis.get(key)
 
-        if fn is not None:
+        if value is not None and fn is not None:
             value = fn(value)
 
         return value
 
-    def get_str(self, key: str) -> Union[str, None]:
+    def get_str(self, key: str) -> Optional[str]:
         """
         Get a string from the Redis cache and convert it.
         """
@@ -75,7 +75,7 @@ class Cache:
 
         return value
 
-    def get_int(self, key: str) -> Union[int, None]:
+    def get_int(self, key: str) -> Optional[int]:
         """
         Get an integer from the Redis cache and convert it.
         """
