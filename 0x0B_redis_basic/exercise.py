@@ -15,7 +15,7 @@ class Cache:
         self._redis = Redis()
         self._redis.flushdb()
 
-    def store(self, data: Union[str, int, float, bytes]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Store data in the Redis cache.
         """
