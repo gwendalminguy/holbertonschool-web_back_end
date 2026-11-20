@@ -2,7 +2,7 @@
 """
 exercice.py
 """
-from typing import Union
+from typing import Union, Optional, Callable
 from uuid import uuid4
 
 import redis
@@ -27,3 +27,36 @@ class Cache:
         self._redis.set(key, data)
 
         return key
+
+    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float] | None:
+        """
+        Get data from the Redis cache and eventually convert it.
+        """
+        value = self._redis.get(key)
+
+        if fn is not None:
+            value = fn(value)
+
+        return value
+
+    def get_str(self, key: str) -> str | None:
+        """
+        Get a string from the Redis cache and convert it.
+        """
+        value = self.get(
+            key=key,
+            fn=lambda data: data.decode("utf-8"),
+        )
+
+        return value
+
+    def get_int(self, key: str) -> int | None:
+        """
+        Get an integer from the Redis cache and convert it.
+        """
+        value = self.get(
+            key=key,
+            fn=lambda data: int(data),
+        )
+
+        return value
