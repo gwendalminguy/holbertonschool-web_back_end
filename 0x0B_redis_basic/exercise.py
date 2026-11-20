@@ -4,7 +4,7 @@ exercice.py
 """
 from redis import Redis
 from typing import Union
-import uuid
+from uuid import uuid4
 
 
 class Cache:
@@ -12,6 +12,9 @@ class Cache:
     Simple Redis cache.
     """
     def __init__(self):
+        """
+        Initialize a Redis cache.
+        """
         self._redis = Redis()
         self._redis.flushdb()
 
@@ -19,7 +22,7 @@ class Cache:
         """
         Store data in the Redis cache.
         """
-        key = str(uuid.uuid4())
+        key = str(uuid4())
         self._redis.set(key, data)
 
         return key
