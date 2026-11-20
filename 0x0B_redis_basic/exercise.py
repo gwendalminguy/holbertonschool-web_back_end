@@ -18,16 +18,7 @@ def count_calls(method: Callable) -> Callable:
         """
         Wrap method to count its calls.
         """
-        value = args[0]._redis.get(method.__qualname__)
-
-        if value is None:
-            value = 0
-        else:
-            value = int(value)
-
-        value += 1
-
-        args[0]._redis.set(method.__qualname__, value)
+        args[0]._redis.incr(method.__qualname__)
 
         return method(*args, **kwds)
 
