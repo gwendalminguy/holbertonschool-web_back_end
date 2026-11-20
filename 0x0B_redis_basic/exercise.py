@@ -2,10 +2,36 @@
 """
 exercice.py
 """
+from functools import wraps
 from typing import Union, Optional, Callable
 from uuid import uuid4
 
 import redis
+
+
+def count_calls(method: Callable) -> Callable:
+    """
+    Decorator to count calls.
+    """
+    @wraps(method)
+    def wrapper(*args, **kwds):
+        """
+        Wrap method to count its calls.
+        """
+        value = args[0]._redis.get(method.__qualname__)
+
+        if value is None:
+            value = 0
+        else:
+            value = int(value)
+
+        value += 1
+
+        args[0]._redis.set(method.__qualname__, value)
+
+        return method(*args, **kwds)
+
+    return wrapper
 
 
 class Cache:
@@ -19,7 +45,11 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: Union[str, bytes, int, float]) -> str:
+    @count_calls
+    def store(
+        self,
+        data: Union[str, bytes, int, float]
+    ) -> str:
         """
         Store data in the Redis cache.
         """
@@ -28,7 +58,11 @@ class Cache:
 
         return key
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float, None]:
+    def get(
+        self,
+        key: str,
+        fn: Optional[Callable] = None
+    ) -> Union[str, bytes, int, float, None]:
         """
         Get data from the Redis cache and eventually convert it.
         """
