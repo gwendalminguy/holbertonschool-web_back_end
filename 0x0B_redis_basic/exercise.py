@@ -20,7 +20,7 @@ def count_calls(method: Callable) -> Callable:
         """
         self._redis.incr(method.__qualname__)
 
-        return method(*args, **kwds)
+        return method(self, *args, **kwds)
 
     return wrapper
 
