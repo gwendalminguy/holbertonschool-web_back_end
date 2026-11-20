@@ -28,7 +28,7 @@ class Cache:
 
         return key
 
-    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float] | None:
+    def get(self, key: str, fn: Optional[Callable] = None) -> Union[str, bytes, int, float, None]:
         """
         Get data from the Redis cache and eventually convert it.
         """
@@ -39,7 +39,7 @@ class Cache:
 
         return value
 
-    def get_str(self, key: str) -> str | None:
+    def get_str(self, key: str) -> Union[str, None]:
         """
         Get a string from the Redis cache and convert it.
         """
@@ -50,7 +50,7 @@ class Cache:
 
         return value
 
-    def get_int(self, key: str) -> int | None:
+    def get_int(self, key: str) -> Union[int, None]:
         """
         Get an integer from the Redis cache and convert it.
         """
