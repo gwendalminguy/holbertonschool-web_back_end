@@ -11,7 +11,7 @@ class Cache:
     """
     Simple Redis cache.
     """
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize a Redis cache.
         """
