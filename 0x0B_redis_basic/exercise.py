@@ -56,12 +56,10 @@ def replay(fn: Callable) -> None:
     outputs = self._redis.lrange(f"{fn.__qualname__}:outputs", 0, -1)
     outputs = [e.decode("utf-8") for e in outputs]
 
-    count = len(inputs)
+    print(f"{fn.__qualname__} was called {len(inputs)} times:")
 
-    print(f"{fn.__qualname__} was called {count} times:")
-
-    for i in range(count):
-        print(f"{fn.__qualname__}(*{inputs[i]}) -> {outputs[i]}")
+    for input, output in zip(inputs, outputs):
+        print(f"{fn.__qualname__}(*{input}) -> {output}")
 
 
 class Cache:
