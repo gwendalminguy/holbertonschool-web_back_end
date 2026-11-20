@@ -12,18 +12,18 @@ P = ParamSpec("P")
 R = TypeVar("R")
 
 
-def count_calls(method: Callable) -> Callable:
+def count_calls(method: Callable[P, R]) -> Callable[P, R]:
     """
     Decorator to count calls.
     """
     @wraps(method)
-    def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+    def wrapper(*args: P.args, **kwds: P.kwargs) -> R:
         """
         Wrap method to count its calls.
         """
         args[0]._redis.incr(method.__qualname__)
 
-        return method(*args, **kwargs)
+        return method(*args, **kwds)
 
     return wrapper
 
