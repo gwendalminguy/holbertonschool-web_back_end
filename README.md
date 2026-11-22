@@ -37,3 +37,5 @@ This repository focuses on back-end web development concepts.
 * [i18n](i18n/), a project to learn about translation.
 
 * [Redis Basic](0x0B_redis_basic/), a project to learn about Redis.
+
+* [MySQL Advanced](MySQL_Advanced/), a project to learn about MySQL.
