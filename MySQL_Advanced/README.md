@@ -26,6 +26,10 @@ This project is about learning to use MySQL.
 
 * [11-need_meeting.sql](11-need_meeting.sql), a script creating a view listing students having a score under 80 and no recent meeting.
 
+* [100-average_weighted_score.sql](100-average_weighted_score.sql), a script creating a stored procedure to compute and update an average weighted score for a user.
+
+* [101-average_weighted_score.sql](101-average_weighted_score.sql), a script creating a stored procedure to compute and update an average weighted score for all users.
+
 * [metal_bands.sql](metal_bands.sql), a SQL dump of metal bands.
 
-* [names.sql](names.sql), a SQL dump of names.
+* [names.sql](), a SQL dump of names.
