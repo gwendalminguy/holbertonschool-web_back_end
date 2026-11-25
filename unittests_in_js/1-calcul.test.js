@@ -20,21 +20,21 @@ describe('calculateNumber()', function () {
     });
   });
 
-  describe('Substract', function () {
-    it('Substracts correctly two integers.', function () {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2, 3), -1);
+  describe('Subtract', function () {
+    it('Subtracts correctly two integers.', function () {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2, 3), -1);
     });
 
-    it('Rounds correctly the first number before substracting.', function () {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2.25, 3), -1);
+    it('Rounds correctly the first number before subtracting.', function () {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2.25, 3), -1);
     });
 
-    it('Rounds correctly the second number before substracting.', function () {
-      assert.strictEqual(calculateNumber('SUBSTRACT', 2, 3.25), -1);
+    it('Rounds correctly the second number before subtracting.', function () {
+      assert.strictEqual(calculateNumber('SUBTRACT', 2, 3.25), -1);
     });
 
-    it('Rounds correctly both numbers before substracting.', function () {
-      assert.strictEqual(calculateNumber('SUBSTRACT', -2, -3), 1);
+    it('Rounds correctly both numbers before subtracting.', function () {
+      assert.strictEqual(calculateNumber('SUBTRACT', -2, -3), 1);
     });
   });
 

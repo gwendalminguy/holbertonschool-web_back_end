@@ -20,21 +20,21 @@ describe('calculateNumber()', function () {
     });
   });
 
-  describe('Substract', function () {
-    it('Substracts correctly two integers.', function () {
+  describe('Subtract', function () {
+    it('Subtracts correctly two integers.', function () {
       expect(calculateNumber('SUBSTRACT', 2, 3)).to.equal(-1);
     });
 
-    it('Rounds correctly the first number before substracting.', function () {
-      expect(calculateNumber('SUBSTRACT', 2.25, 3)).to.equal(-1);
+    it('Rounds correctly the first number before subtracting.', function () {
+      expect(calculateNumber('SUBTRACT', 2.25, 3)).to.equal(-1);
     });
 
-    it('Rounds correctly the second number before substracting.', function () {
-      expect(calculateNumber('SUBSTRACT', 2, 3.25)).to.equal(-1);
+    it('Rounds correctly the second number before subtracting.', function () {
+      expect(calculateNumber('SUBTRACT', 2, 3.25)).to.equal(-1);
     });
 
-    it('Rounds correctly both numbers before substracting.', function () {
-      expect(calculateNumber('SUBSTRACT', -2, -3)).to.equal(1);
+    it('Rounds correctly both numbers before subtracting.', function () {
+      expect(calculateNumber('SUBTRACT', -2, -3)).to.equal(1);
     });
   });
 
