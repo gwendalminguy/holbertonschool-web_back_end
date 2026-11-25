@@ -8,7 +8,7 @@ function calculateNumber(type, a, b) {
         case 'SUBSTRACT':
             return a - b;
         case 'DIVIDE':
-            if (b == 0) {
+            if (b === 0) {
                 return 'Error';
             } else {
                 return a / b;
