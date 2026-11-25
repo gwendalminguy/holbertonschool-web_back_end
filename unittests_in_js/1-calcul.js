@@ -13,8 +13,6 @@ function calculateNumber(type, a, b) {
             } else {
                 return a / b;
             }
-        default:
-            return 'Error';
     }
 }
 
