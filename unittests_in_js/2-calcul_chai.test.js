@@ -22,7 +22,7 @@ describe('calculateNumber()', function () {
 
   describe('Subtract', function () {
     it('Subtracts correctly two integers.', function () {
-      expect(calculateNumber('SUBSTRACT', 2, 3)).to.equal(-1);
+      expect(calculateNumber('SUBTRACT', 2, 3)).to.equal(-1);
     });
 
     it('Rounds correctly the first number before subtracting.', function () {
