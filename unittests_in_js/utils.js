@@ -6,7 +6,7 @@ const Utils = {
         switch (type) {
             case 'SUM':
                 return a + b;
-            case 'SUBSTRACT':
+            case 'SUBTRACT':
                 return a - b;
             case 'DIVIDE':
                 if (b === 0) {
