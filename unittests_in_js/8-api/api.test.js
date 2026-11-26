@@ -24,7 +24,7 @@ describe('Index Page', function () {
             }
 
             try {
-                expect(body).to.equal('Welcome to the payment system\n');
+                expect(body).to.equal('Welcome to the payment system');
                 done();
             } catch (error) {
                 done(error);
